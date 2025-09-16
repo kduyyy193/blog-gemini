@@ -2,7 +2,7 @@ FROM node:lts-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install --frozen-lockfile
 
 COPY . .
@@ -12,7 +12,7 @@ FROM node:lts-alpine AS production
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install --frozen-lockfile
 
 COPY --from=builder /app/dist ./dist
