@@ -6,7 +6,7 @@ COPY package.json ./
 RUN yarn install --frozen-lockfile
 
 COPY . .
-RUN yarn builder
+RUN yarn build
 
 FROM node:lts-alpine AS production
 
